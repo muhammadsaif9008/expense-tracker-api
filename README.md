@@ -4,7 +4,7 @@ A secure RESTful API built with ASP.NET Core 8 and C#, featuring JWT authenticat
 input validation, and a clean frontend UI. Deployed on Microsoft Azure.
 
 ## 🌐 Live Demo
-**Frontend:** https://saif-expense-tracker.azurewebsites.net
+**Frontend:** https://saif-expense-tracker.azurewebsites.net/index.html
 **API Docs:** https://saif-expense-tracker.azurewebsites.net/swagger/index.html
 
 ## 🛠 Tech Stack
