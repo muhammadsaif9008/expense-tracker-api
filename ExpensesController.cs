@@ -1,47 +1,73 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
-namespace ExpenseTrackerAPI
+namespace ExpenseTrackerAPI;
+
+[Authorize]
+[ApiController]
+[Route("api/[controller]")]
+public class ExpensesController : ControllerBase
 {
-    [Authorize]
-    [ApiController]
-    [Route("api/[controller]")]
-    public class ExpensesController : ControllerBase
+    private readonly AppDbContext _db;
+
+    public ExpensesController(AppDbContext db)
     {
-        private readonly AppDbContext _db;
+        _db = db;
+    }
 
-        public ExpensesController(AppDbContext db)
-        {
-            _db = db;
-        }
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
+    {
+        var expenses = await _db.Expenses.ToListAsync();
 
-        [HttpGet]
-        public ActionResult<List<Expense>> GetAll()
-        {
-            return Ok(_db.Expenses.ToList());
-        }
+        if (!expenses.Any())
+            return Ok(new { message = "No expenses found", data = expenses });
 
-        [HttpPost]
-        public ActionResult<Expense> Create(Expense newExpense)
-        {
-            _db.Expenses.Add(newExpense);
-            _db.SaveChanges();
-            return Ok(newExpense);
-        }
+        return Ok(new { message = "Expenses retrieved successfully", data = expenses });
+    }
 
-        [HttpDelete("{id}")]
-        public ActionResult Delete(int id)
-        {
-            var expense = _db.Expenses.Find(id);
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById(int id)
+    {
+        var expense = await _db.Expenses.FindAsync(id);
 
-            if (expense == null)
+        if (expense == null)
+            return NotFound(new { message = $"Expense with ID {id} not found" });
+
+        return Ok(new { message = "Expense retrieved successfully", data = expense });
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Create([FromBody] Expense expense)
+    {
+        if (!ModelState.IsValid)
+            return BadRequest(new
             {
-                return NotFound();
-            }
+                message = "Validation failed",
+                errors = ModelState.Values
+                    .SelectMany(v => v.Errors)
+                    .Select(e => e.ErrorMessage)
+            });
 
-            _db.Expenses.Remove(expense);
-            _db.SaveChanges();
-            return Ok();
-        }
+        _db.Expenses.Add(expense);
+        await _db.SaveChangesAsync();
+
+        return CreatedAtAction(nameof(GetById), new { id = expense.Id },
+            new { message = "Expense created successfully", data = expense });
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var expense = await _db.Expenses.FindAsync(id);
+
+        if (expense == null)
+            return NotFound(new { message = $"Expense with ID {id} not found" });
+
+        _db.Expenses.Remove(expense);
+        await _db.SaveChangesAsync();
+
+        return Ok(new { message = $"Expense with ID {id} deleted successfully" });
     }
 }

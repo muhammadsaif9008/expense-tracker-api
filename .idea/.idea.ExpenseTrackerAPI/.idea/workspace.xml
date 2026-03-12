@@ -9,15 +9,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a631844c-ae93-45f6-8c03-d8f0d2282def" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/AuthController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ExpenseTrackerAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ExpenseTrackerAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AppDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Expense.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Expense.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ExpenseTrackerAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ExpenseTrackerAPI.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ExpensesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ExpensesController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/AppDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Migrations/AppDbContextModelSnapshot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expenses.db" beforeDir="false" afterPath="$PROJECT_DIR$/expenses.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +93,7 @@
       <updated>1773046661726</updated>
       <workItem from="1773046663294" duration="21321000" />
       <workItem from="1773167119273" duration="54000" />
-      <workItem from="1773298685157" duration="1773000" />
+      <workItem from="1773298685157" duration="3149000" />
     </task>
     <servers />
   </component>
