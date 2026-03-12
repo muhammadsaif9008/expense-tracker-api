@@ -1,7 +1,8 @@
 # Expense Tracker API
 
-A secure RESTful API built with ASP.NET Core 8 and C#, featuring JWT authentication, 
-input validation, and a clean frontend UI. Deployed on Microsoft Azure.
+A secure full-stack expense tracking application built with ASP.NET Core 8 and C#, 
+featuring JWT authentication, Azure SQL database, and a clean frontend UI. 
+Deployed on Microsoft Azure.
 
 ## 🌐 Live Demo
 **Frontend:** https://saif-expense-tracker.azurewebsites.net/index.html
@@ -10,11 +11,11 @@ input validation, and a clean frontend UI. Deployed on Microsoft Azure.
 ## 🛠 Tech Stack
 - **Language:** C#
 - **Framework:** ASP.NET Core 8
-- **Database:** SQLite
+- **Database:** Azure SQL Server
 - **ORM:** Entity Framework Core 8
 - **Authentication:** JWT Bearer Tokens + ASP.NET Core Identity
 - **Validation:** Data Annotations + Model State
-- **Cloud:** Azure App Service
+- **Cloud:** Azure App Service + Azure SQL Database
 - **Documentation:** Swagger UI
 
 ## 🔐 API Endpoints
@@ -47,7 +48,7 @@ cd ExpenseTrackerAPI
 ```bash
 dotnet run
 ```
-4. Open frontend at `http://localhost:5078`
+4. Open frontend at `http://localhost:5078/index.html`
 5. Open Swagger UI at `http://localhost:5078/swagger`
 
 ## 📋 Example Request
