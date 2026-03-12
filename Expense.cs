@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ExpenseTrackerAPI;
 
@@ -12,6 +13,8 @@ public class Expense
 
     [Required(ErrorMessage = "Amount is required")]
     [Range(0.01, 1000000, ErrorMessage = "Amount must be greater than 0")]
+    [Column(TypeName = "decimal(18,2)")]
+
     public decimal Amount { get; set; }
 
     [Required(ErrorMessage = "Category is required")]
